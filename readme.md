@@ -22,8 +22,28 @@ No Removals at this time
 
 ## Requirements
 - Python 3.10+
+- Elasticsearch Version 7.0+
 - modules in requirements including (but not limited to):
   - [sodapy](https://pypi.org/project/sodapy/)
   - [elasticsearch](https://elasticsearch-py.readthedocs.io/)
   
+## Connect to Elasticsearch
+`connection.py` has two modules designed to read your environment variables. Import the
+  connection that best fits your elasticsearch setup.
 
+### Elastic Cloud
+Connect to an Elastic Cloud instance by setting the following environment
+variables:
+
+ES_CLOUD_ID - the cloud_id of your Elastic instance
+ES_PWD - the password to connect to your Elasticsearch cluster
+
+There are no defaults for these values. You will not be able to connect without setting them
+or modifying `connection.py`
+
+### Local/hosted Deployment
+Connect to an hosted instance by setting the following environment
+variables:
+
+ES_HOST - the address of your Elastic instance (defaults to localhost)
+ES_PWD - the password to connect to your Elasticsearch cluster (defaults to 'elastic') 
