@@ -47,3 +47,13 @@ variables:
 
 ES_HOST - the address of your Elastic instance (defaults to localhost)
 ES_PWD - the password to connect to your Elasticsearch cluster (defaults to 'elastic') 
+
+## Updating Dataset information
+Some information is provided via json files to make transfer/modification of information
+easier.
+
+|Description|filename|comments|
+|---|---|
+|Mappings|`mappings.json`|mappings for elasticsearch index|
+|Socrata Connection Information|`socrata.json`|domain and dataset ids for socrata data|
+
