@@ -6,6 +6,12 @@ Find more about this data at [Seattle's Open Data Portal](https://data.seattle.g
 ## Disclosure
 This repo is for educational purposes and should not be used for identification purposes.
 
+## How to Use this Repo
+- Setup Elasticsearch Cluster
+- Fork Repo
+- setup python environment
+- run `ingest.py`
+
 ## How this repo works.
 This dataset loads the data via [Socrata](https://dev.socrata.com) and ingests it into elasticsearch.
 
@@ -32,7 +38,7 @@ No Removals at this time
 **[Note]** other mappings may be defined in Elasticsearch based on this information and not listed in this repository.
 
 ## Requirements
-- Python 3.10+
+- Python 3.6+ (though 3.7+ is supported)
 - Elasticsearch Version 7.0+
 - modules in requirements including (but not limited to):
   - [sodapy](https://pypi.org/project/sodapy/)
@@ -46,17 +52,18 @@ No Removals at this time
 Connect to an Elastic Cloud instance by setting the following environment
 variables:
 
+ES_USER - the username of the account (defaults to 'elastic')
 ES_CLOUD_ID - the cloud_id of your Elastic instance
 ES_PWD - the password to connect to your Elasticsearch cluster
 
-There are no defaults for these values. You will not be able to connect without setting them
-or modifying `connection.py`
+Neither ES_CLOUD_ID nor ES_PWD have defaults. You will not be able to connect without setting them or modifying `connection.py`
 
 ### Local/hosted Deployment
 Connect to an hosted instance by setting the following environment
 variables:
 
 ES_HOST - the address of your Elastic instance (defaults to localhost)
+ES_USER - the username of the account (defaults to 'elastic')
 ES_PWD - the password to connect to your Elasticsearch cluster (defaults to 'elastic') 
 
 ## Updating Dataset information
