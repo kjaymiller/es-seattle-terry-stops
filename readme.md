@@ -3,6 +3,9 @@ Index the Seattle Terry Stops data from the City of Seattle.
 
 Find more about this data at [Seattle's Open Data Portal](https://data.seattle.gov/Public-Safety/Terry-Stops/28ny-9ts8)
 
+## Disclosure
+This repo is for educational purposes and should not be used for identification purposes.
+
 ## How this repo works.
 This dataset loads the data via [Socrata](https://dev.socrata.com) and ingests it into elasticsearch.
 
@@ -17,6 +20,14 @@ No Modifications at this time
 ---
 No Removals at this time
 
+
+### Notes
+---
+* Reported Date/Reported Time do not correlate to the date/time of the stop. For this
+  reason, we will not use _Reported Time_ logging metrics. Reported Date is most often within
+  1-day of incident. For this reason date based data will not be accurate for pinpointing a
+  particular incident
+  fields
 
 **[Note]** other mappings may be defined in Elasticsearch based on this information and not listed in this repository.
 
@@ -52,8 +63,9 @@ ES_PWD - the password to connect to your Elasticsearch cluster (defaults to 'ela
 Some information is provided via json files to make transfer/modification of information
 easier.
 
-|Description|Filename|Comments|
-|---|---|---|
-|Mappings|`mappings.json`|mappings for elasticsearch index|
-|Socrata Connection Information|`socrata.json`|domain and dataset ids for socrata data|
+### Mappings - `mappings.json`
+mappings for elasticsearch index. Only usable with `elasticsearch-py`. If no mappings. Then assume all data is in keyword format
+
+### Socrata Connection Information - `socrata.json`
+domain and dataset ids for socrata data
 
