@@ -1,0 +1,7 @@
+{
+    "properties": {
+	"reported_date": {
+	    type:"date"
+	}
+    }
+}

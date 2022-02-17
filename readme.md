@@ -64,7 +64,7 @@ Some information is provided via json files to make transfer/modification of inf
 easier.
 
 ### Mappings - `mappings.json`
-mappings for elasticsearch index. Only usable with `elasticsearch-py`. If no mappings. Then assume all data is in keyword format
+mappings for elasticsearch index. Only usable with `elasticsearch-py`. If no mappings, assume all fields are in keyword format.
 
 ### Socrata Connection Information - `socrata.json`
 domain and dataset ids for socrata data
