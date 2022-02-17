@@ -52,8 +52,8 @@ ES_PWD - the password to connect to your Elasticsearch cluster (defaults to 'ela
 Some information is provided via json files to make transfer/modification of information
 easier.
 
-|Description|filename|comments|
-|---|---|
+|Description|Filename|Comments|
+|---|---|---|
 |Mappings|`mappings.json`|mappings for elasticsearch index|
 |Socrata Connection Information|`socrata.json`|domain and dataset ids for socrata data|
 
