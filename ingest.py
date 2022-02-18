@@ -50,7 +50,7 @@ def bulk_mapper(soda_client: Sequence) -> dict[str:str]:
         yield new_row
 
 
-def load(index, \) -> None:
+def load(index: str, / ) -> None:
     """ Load Socrata data into Elasticsearch.
     
     :param index: Elasticsearch index name
@@ -76,6 +76,7 @@ def load(index, \) -> None:
         client, bulk_mapper(soda_client), index=index, thread_count=10
     ):
         pass
+
 
 if __name__ == "__main__":
     load(index=os.environ.get('ES_INDEX', 'test_index'))
