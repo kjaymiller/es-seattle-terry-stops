@@ -13,15 +13,22 @@ with open("socrata.json") as f:
 
 
 def bulk_mapper(soda_client: Sequence) -> dict[str:str]:
-    #    soda_data = soda_client.get(
-    #            soda_info["dataset_id"],
-    #            limit=10,
-    #            order="terry_stop_id DESC",
-    #    )  # loads partial data for testing
+    """ Map Socrata dataset to a bulk indexable format.
 
-    soda_data = soda_client.get_all(
-        soda_info["dataset_id"],
-    )
+    :param soda_client: Socrata client
+    :return: dict of bulk indexable format
+
+    Use .get() for testing mapping and data changes
+    ```
+    soda_data = soda_client.get(
+                soda_info["dataset_id"],
+                limit=10,
+                order="terry_stop_id DESC",
+        ) 
+    ```
+    """
+    
+    soda_data = soda_client.get_all(soda_info["dataset_id"])
 
     for row in soda_data:
         data = {slugify(x, separator="_"): y for x, y in row.items()}
@@ -37,13 +44,18 @@ def bulk_mapper(soda_client: Sequence) -> dict[str:str]:
                 # we want to include None values for Weapon Type
                 new_row[key] = val
 
-            if key in ["friskflag", "arrestflag"]:
+            if key in ["friskflag", "arrestflag"]: # boolean values
                 new_row[key] = val.lower() in ["y", "true", "yes", "1"]
 
         yield new_row
 
 
-def load(index: Optional[str] = None) -> None:
+def load(index, \) -> None:
+    """ Load Socrata data into Elasticsearch.
+    
+    :param index: Elasticsearch index name
+    :return: None
+    """
 
     soda_client = sodapy.Socrata(
         soda_info["domain"],
@@ -51,15 +63,10 @@ def load(index: Optional[str] = None) -> None:
         timeout=45,
     )
 
-    if not index:
-        index = os.environ.get(
-            "ES_INDEX", os.environ.get(soda_data.get(["soda_dataset_id"]))
-        )
-
     with open("mappings.json") as f:
         mappings = json.load(f)
 
-    client = get_es_connection("local")
+    client = get_es_connection(os.environ.get("ES_CONNECTION_TYPE", "local"))
     client.indices.delete(
         index=index, ignore_unavailable=True
     )  # delete index if it exists
@@ -71,4 +78,4 @@ def load(index: Optional[str] = None) -> None:
         pass
 
 if __name__ == "__main__":
-    load(index="seattle-terry-stops")
+    load(index=os.environ.get('ES_INDEX', 'test_index'))

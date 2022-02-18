@@ -52,9 +52,11 @@ No Removals at this time
 Connect to an Elastic Cloud instance by setting the following environment
 variables:
 
-ES_USER - the username of the account (defaults to 'elastic')
-ES_CLOUD_ID - the cloud_id of your Elastic instance
-ES_PWD - the password to connect to your Elasticsearch cluster
+`ES_CONNECTION_TYPE=cloud`
+`ES_CLOUD_ID` - the cloud_id of your Elastic instance
+`ES_INDEX` - name of the index to be created in Elasticsearch
+`ES_PWD` - the password to connect to your Elasticsearch cluster
+`ES_USER` - the username of the account (defaults to 'elastic')
 
 Neither ES_CLOUD_ID nor ES_PWD have defaults. You will not be able to connect without setting them or modifying `connection.py`
 
@@ -62,9 +64,12 @@ Neither ES_CLOUD_ID nor ES_PWD have defaults. You will not be able to connect wi
 Connect to an hosted instance by setting the following environment
 variables:
 
-ES_HOST - the address of your Elastic instance (defaults to localhost)
-ES_USER - the username of the account (defaults to 'elastic')
-ES_PWD - the password to connect to your Elasticsearch cluster (defaults to 'elastic') 
+`ES_CONNECTION_TYPE=local` (default)
+`ES_HOST` - the address of your Elastic instance (defaults to localhost)
+`ES_INDEX` - name of the index to be created in Elasticsearch
+`ES_PWD` - the password to connect to your Elasticsearch cluster (defaults to 'elastic') 
+`ES_USER` - the username of the account (defaults to 'elastic')
+
 
 ## Updating Dataset information
 Some information is provided via json files to make transfer/modification of information
@@ -75,4 +80,3 @@ mappings for elasticsearch index. Only usable with `elasticsearch-py`. If no map
 
 ### Socrata Connection Information - `socrata.json`
 domain and dataset ids for socrata data
-
