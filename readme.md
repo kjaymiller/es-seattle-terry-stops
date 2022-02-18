@@ -26,38 +26,26 @@ Any mutations will be annotated in [data_change_notes.md](./data_change_notes.md
   - [elasticsearch](https://elasticsearch-py.readthedocs.io/)
   
 ## Connect to Elasticsearch
-Set the environment variable `ES_CONNECTION_TYPE` to `cloud/local`
-* `ES_CONNECTION_TYPE=cloud` - Elastic Cloud
-* `ES_CONNECTION_TYPE=local` - Elastic Self-Hosted
+## [YOU ARE ON THE DOCKER COMPOSE BRANCH]
+Instructions are setup for self-hosted reports. If you are looking for the Elastic Cloud instructions head to the [main branch](https://github.com/kjaymiller/es-seattle-terry-stops)
+
+Set the environment variable `ES_CONNECTION_TYPE` to `local`
+`ES_CONNECTION_TYPE=local`
 
 ## Index Name
 Set the environment variable
-* `ES_INDEX` - name of the index to be created in Elasticsearch 
-
-### Elastic Cloud
-Connect to an Elastic Cloud instance by setting the following environment
-variables:
-
-* `ES_CLOUD_ID` - the cloud_id of your Elastic instance 
-* `ES_PWD` - the password to connect to your Elasticsearch cluster 
-* `ES_USER` - the username of the account (defaults to 'elastic') 
-
-Neither ES_CLOUD_ID nor ES_PWD have defaults. You will not be able to connect without setting them or modifying `connection.py`
+`ES_INDEX="seattle-terry-stops` - name of the index to be created in Elasticsearch 
 
 ### Local/hosted Deployment
 Connect to an hosted instance by setting the following environment
 variables:
 
-* `ES_HOST` - the address of your Elastic instance (defaults to localhost)
-* `ES_INDEX` - name of the index to be created in Elasticsearch
-* `ES_PWD` - the password to connect to your Elasticsearch cluster (defaults to 'elastic') 
-* `ES_USER` - the username of the account (defaults to 'elastic')
+* `ES_HOST="HTTPS://EXAMPLEHOST.COM:9200` - the address of your Elastic instance (defaults to localhost)
+* `ES_PWD=changeme` - the password to connect to your Elasticsearch cluster (defaults to 'changeme') 
+* `ES_USER=elastic` - the username of the account (defaults to 'elastic')
 
 
 ## Updating Dataset information
-Some information is provided via json files to make transfer/modification of information
-easier.
-
 ### Mappings - `mappings.json`
 mappings for elasticsearch index. Only usable with `elasticsearch-py`. If no mappings, assume all fields are in text format.
 
