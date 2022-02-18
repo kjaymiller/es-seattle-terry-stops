@@ -3,7 +3,7 @@ import json
 from typing import Optional, Sequence
 
 import sodapy
-from elasticsearch.helpers import parallel_bulk
+from elasticsearch.helpers import bulk
 
 from connection import get_es_connection
 
@@ -33,17 +33,23 @@ def bulk_mapper(soda_client: Sequence) -> dict[str:str]:
         new_row = {}
 
         for key, val in row.items():
-            if val == "-1": # fix subjectid
+            
+            # Check for not entered values and skip them
+            if key == 'subject_id', and val == "-1":
                 continue
 
-            val = val.lstrip("-").strip() # removes whitespace and -
-
-            if val.lower() not in ["", "-", "none"] or key == "weapon_type": 
+            if val.lower() in ["", "-", "none"] and key != "weapon_type": 
                 # skips unmarked values EXCEPT for weapon_type
-                new_row[key] = val.strip()
+                continue
 
-            if key in ["friskflag", "arrestflag"]: # boolean values
+            # frisk and arrest flages are boolean values
+            if key in ["friskflag", "arrestflag"]:
                 new_row[key] = val.lower() in ["y", "true", "yes", "1"]
+
+            # most data
+            else:
+                val = val.lstrip("-").strip() # removes whitespace and -
+
 
         yield new_row
 
@@ -70,10 +76,7 @@ def load(index: str, / ) -> None:
     )  # delete index if it exists
     client.indices.create(index=index, mappings=mappings)
 
-    for ok, result in parallel_bulk(
-        client, bulk_mapper(soda_client), index=index, thread_count=10
-    ):
-        pass
+    return bulk(client, bulk_mapper(soda_client), index=index, thread_count=10)
 
 
 if __name__ == "__main__":
