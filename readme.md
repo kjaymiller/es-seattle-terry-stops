@@ -26,38 +26,26 @@ Any mutations will be annotated in [data_change_notes.md](./data_change_notes.md
   - [elasticsearch](https://elasticsearch-py.readthedocs.io/)
   
 ## Connect to Elasticsearch
-Set the environment variable `ES_CONNECTION_TYPE` to `cloud/local`
+Set the environment variable `ES_CONNECTION_TYPE` to `cloud`
 * `ES_CONNECTION_TYPE=cloud` - Elastic Cloud
-* `ES_CONNECTION_TYPE=local` - Elastic Self-Hosted
 
 ## Index Name
 Set the environment variable
-* `ES_INDEX` - name of the index to be created in Elasticsearch 
+* `ES_INDEX=es-terry-stops` - name of the index to be created in Elasticsearch 
 
 ### Elastic Cloud
 Connect to an Elastic Cloud instance by setting the following environment
 variables:
 
-* `ES_CLOUD_ID` - the cloud_id of your Elastic instance 
-* `ES_PWD` - the password to connect to your Elasticsearch cluster 
-* `ES_USER` - the username of the account (defaults to 'elastic') 
+* `ES_CLOUD_ID=<MYCLOUDID1234567890>` - the cloud_id of your Elastic instance 
+* `ES_PWD=<CLOUDPWD>` - the password to connect to your Elasticsearch cluster 
+* `ES_USER=elastic` - the username of the account (defaults to 'elastic') 
 
 Neither ES_CLOUD_ID nor ES_PWD have defaults. You will not be able to connect without setting them or modifying `connection.py`
-
+For help setting up Elastic Cloud check [this discussion post](https://github.com/kjaymiller/es-seattle-terry-stops/discussions/7) and visit <https://cloud.elastic.co>.
 ### Local/hosted Deployment
-Connect to an hosted instance by setting the following environment
-variables:
-
-* `ES_HOST` - the address of your Elastic instance (defaults to localhost)
-* `ES_INDEX` - name of the index to be created in Elasticsearch
-* `ES_PWD` - the password to connect to your Elasticsearch cluster (defaults to 'elastic') 
-* `ES_USER` - the username of the account (defaults to 'elastic')
-
-
+Instructions for self-hosted docker compose setup on the [docker-compose branch](https://github.com/kjaymiller/es-seattle-terry-stops/tree/docker-compose)
 ## Updating Dataset information
-Some information is provided via json files to make transfer/modification of information
-easier.
-
 ### Mappings - `mappings.json`
 mappings for elasticsearch index. Only usable with `elasticsearch-py`. If no mappings, assume all fields are in text format.
 
