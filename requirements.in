@@ -1,6 +1,5 @@
 elasticsearch
 sodapy
-python-slugify
 
 # Formatting
 isort

@@ -2,7 +2,6 @@ import os
 import json
 from typing import Optional, Sequence
 
-from slugify import slugify
 import sodapy
 from elasticsearch.helpers import parallel_bulk
 
@@ -31,7 +30,7 @@ def bulk_mapper(soda_client: Sequence) -> dict[str:str]:
     soda_data = soda_client.get_all(soda_info["dataset_id"])
 
     for row in soda_data:
-        data = {slugify(x, separator="_"): y for x, y in row.items()}
+        data = {x: y for x, y in row.items()}
         new_row = {}
 
         for key, val in data.items():
