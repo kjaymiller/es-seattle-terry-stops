@@ -30,10 +30,9 @@ def bulk_mapper(soda_client: Sequence) -> dict[str:str]:
     soda_data = soda_client.get_all(soda_info["dataset_id"])
 
     for row in soda_data:
-        data = {x: y for x, y in row.items()}
         new_row = {}
 
-        for key, val in data.items():
+        for key, val in row.items():
             if val == "-1": # fix subjectid
                 continue
 
