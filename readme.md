@@ -30,10 +30,12 @@ Any mutations will be annotated in [data_change_notes.md](./data_change_notes.md
 Instructions are setup for self-hosted reports. If you are looking for the Elastic Cloud instructions head to the [main branch](https://github.com/kjaymiller/es-seattle-terry-stops)
 
 Set the environment variable `ES_CONNECTION_TYPE` to `local`
+
 `ES_CONNECTION_TYPE=local`
 
 ## Index Name
 Set the environment variable
+
 `ES_INDEX="seattle-terry-stops` - name of the index to be created in Elasticsearch 
 
 ### Local/hosted Deployment
