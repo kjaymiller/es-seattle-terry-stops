@@ -41,7 +41,7 @@ variables:
 * `ES_PWD=<CLOUDPWD>` - the password to connect to your Elasticsearch cluster 
 * `ES_USER=elastic` - the username of the account (defaults to 'elastic') 
 
-Neither ES_CLOUD_ID nor ES_PWD have defaults. You will not be able to connect without setting them or modifying `connection.py`
+Neither ES_CLOUD_ID nor ES_PWD have defaults. **You will not be able to connect without setting them** or modifying `connection.py`
 For help setting up Elastic Cloud check [this discussion post](https://github.com/kjaymiller/es-seattle-terry-stops/discussions/7) and visit <https://cloud.elastic.co>.
 ### Local/hosted Deployment
 Instructions for self-hosted docker compose setup on the [docker-compose branch](https://github.com/kjaymiller/es-seattle-terry-stops/tree/docker-compose)
