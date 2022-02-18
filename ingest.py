@@ -34,14 +34,14 @@ def bulk_mapper(soda_client: Sequence) -> dict[str:str]:
         new_row = {}
 
         for key, val in data.items():
-            if val == "-1":
+            if val == "-1": # fix subjectid
                 continue
 
-            val = val.lstrip("-")
+            val = val.lstrip("-").strip() # removes whitespace and -
 
-            if val.lower() not in ["", "-", "none"] or key == "weapon_type":
-                # we want to include None values for Weapon Type
-                new_row[key] = val
+            if val.lower() not in ["", "-", "none"] or key == "weapon_type": 
+                # skips unmarked values EXCEPT for weapon_type
+                new_row[key] = val.strip()
 
             if key in ["friskflag", "arrestflag"]: # boolean values
                 new_row[key] = val.lower() in ["y", "true", "yes", "1"]
