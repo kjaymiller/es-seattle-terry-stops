@@ -35,7 +35,7 @@ def bulk_mapper(soda_client: Sequence) -> dict[str:str]:
         for key, val in row.items():
             
             # Check for not entered values and skip them
-            if key == 'subject_id', and val == "-1":
+            if key == 'subject_id' and val == "-1":
                 continue
 
             if val.lower() in ["", "-", "none"] and key != "weapon_type": 
@@ -75,7 +75,6 @@ def load(index: str, / ) -> None:
         index=index, ignore_unavailable=True
     )  # delete index if it exists
     client.indices.create(index=index, mappings=mappings)
-
     return bulk(client, bulk_mapper(soda_client), index=index, thread_count=10)
 
 
