@@ -19,23 +19,26 @@ Mappings are translated based on the columns provided.
 Any mutations will be annotated in [data_change_notes.md](./data_change_notes.md)
 
 ## Requirements
-- Python 3.6+ (though 3.7+ is supported)
+- Python 3.7+
 - Elasticsearch Version 7.0+
 - modules in requirements including (but not limited to):
   - [sodapy](https://pypi.org/project/sodapy/)
   - [elasticsearch](https://elasticsearch-py.readthedocs.io/)
   
 ## Connect to Elasticsearch
-`connection.py` has two modules designed to read your environment variables. Import the
-  connection that best fits your elasticsearch setup.
+Set the environment variable `ES_CONNECTION_TYPE` to `cloud/local`
+* `ES_CONNECTION_TYPE=cloud` - Elastic Cloud
+* `ES_CONNECTION_TYPE=local` - Elastic Self-Hosted
+
+## Index Name
+Set the environment variable
+* `ES_INDEX` - name of the index to be created in Elasticsearch 
 
 ### Elastic Cloud
 Connect to an Elastic Cloud instance by setting the following environment
 variables:
 
-* `ES_CONNECTION_TYPE=cloud` 
 * `ES_CLOUD_ID` - the cloud_id of your Elastic instance 
-* `ES_INDEX` - name of the index to be created in Elasticsearch 
 * `ES_PWD` - the password to connect to your Elasticsearch cluster 
 * `ES_USER` - the username of the account (defaults to 'elastic') 
 
@@ -45,7 +48,6 @@ Neither ES_CLOUD_ID nor ES_PWD have defaults. You will not be able to connect wi
 Connect to an hosted instance by setting the following environment
 variables:
 
-* `ES_CONNECTION_TYPE=local` (default)
 * `ES_HOST` - the address of your Elastic instance (defaults to localhost)
 * `ES_INDEX` - name of the index to be created in Elasticsearch
 * `ES_PWD` - the password to connect to your Elasticsearch cluster (defaults to 'elastic') 
@@ -57,7 +59,7 @@ Some information is provided via json files to make transfer/modification of inf
 easier.
 
 ### Mappings - `mappings.json`
-mappings for elasticsearch index. Only usable with `elasticsearch-py`. If no mappings, assume all fields are in keyword format.
+mappings for elasticsearch index. Only usable with `elasticsearch-py`. If no mappings, assume all fields are in text format.
 
 ### Socrata Connection Information - `socrata.json`
 domain and dataset ids for socrata data
