@@ -6,7 +6,7 @@ volumes:
 
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:$version
+    image: docker.elastic.co/elasticsearch/elasticsearch:$es_version
     environment:
       - "discovery.type=single-node"
       - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
@@ -23,7 +23,7 @@ services:
       - 9200:9200
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:$version
+    image: docker.elastic.co/kibana/kibana:$es_version
 
     depends_on:
       - "elasticsearch"
