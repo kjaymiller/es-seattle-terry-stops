@@ -1,72 +1,73 @@
-{"properties": {
-        "arrestflag": {
-          "type": "boolean"
-        },
-        "beat": {
-          "type": "keyword"
-        },
-        "calltype": {
-          "type": "keyword"
-        },
-        "finalcalltype": {
-          "type": "keyword"
-        },
-        "friskflag": {
-          "type": "boolean"
-        },
-        "go_num": {
-          "type": "keyword"
-        },
-        "initialcalltype": {
-          "type": "keyword"
-        },
-        "officer_gender": {
-          "type": "keyword"
-        },
-        "officer_race": {
-          "type": "keyword"
-        },
-        "officer_yob": {
-          "type": "keyword"
-        },
-        "officerid": {
-          "type": "keyword"
-        },
-        "officersquad": {
-          "type": "keyword"
-        },
-        "precinct": {
-          "type": "keyword"
-        },
-        "reported_date": {
-          "type": "date"
-        },
-        "reported_time": {
-          "type": "keyword"
-        },
-        "resolution": {
-          "type": "keyword"
-        },
-        "sector": {
-          "type": "keyword"
-        },
-        "subjectagegroup": {
-          "type": "keyword"
-        },
-        "subjectgender": {
-          "type": "keyword"
-        },
-        "subjectid": {
-          "type": "keyword"
-	},
-        "subjectrace": {
-          "type": "keyword"
-        },
-        "terry_stop_id": {
-          "type": "keyword"
-        },
-        "weapon_type": {
-          "type": "keyword"
-        }
-      }
+{
+  "properties": {
+    "arrestflag": {
+      "type": "boolean"
+    },
+    "beat": {
+      "type": "keyword"
+    },
+    "calltype": {
+      "type": "keyword"
+    },
+    "finalcalltype": {
+      "type": "keyword"
+    },
+    "friskflag": {
+      "type": "boolean"
+    },
+    "go_num": {
+      "type": "keyword"
+    },
+    "initialcalltype": {
+      "type": "keyword"
+    },
+    "officer_gender": {
+      "type": "keyword"
+    },
+    "officer_race": {
+      "type": "keyword"
+    },
+    "officer_yob": {
+      "type": "keyword"
+    },
+    "officerid": {
+      "type": "keyword"
+    },
+    "officersquad": {
+      "type": "keyword"
+    },
+    "precinct": {
+      "type": "keyword"
+    },
+    "reported_date": {
+      "type": "date"
+    },
+    "reported_time": {
+      "type": "keyword"
+    },
+    "resolution": {
+      "type": "keyword"
+    },
+    "sector": {
+      "type": "keyword"
+    },
+    "subjectagegroup": {
+      "type": "keyword"
+    },
+    "subjectgender": {
+      "type": "keyword"
+    },
+    "subjectid": {
+      "type": "keyword"
+    },
+    "subjectrace": {
+      "type": "keyword"
+    },
+    "terry_stop_id": {
+      "type": "keyword"
+    },
+    "weapon_type": {
+      "type": "keyword"
+    }
+  }
 }
