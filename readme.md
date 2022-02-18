@@ -37,9 +37,10 @@ Set the environment variable
 `ES_INDEX="seattle-terry-stops` - name of the index to be created in Elasticsearch 
 
 ### Local/hosted Deployment
-Connect to an hosted instance by setting the following environment
-variables:
+Connect to an hosted instance by setting the following environment. 
 
+variables:
+* `ES_VERSION=8.0.0` - elasticsearch version
 * `ES_HOST="HTTPS://EXAMPLEHOST.COM:9200` - the address of your Elastic instance (defaults to localhost)
 * `ES_PWD=changeme` - the password to connect to your Elasticsearch cluster (defaults to 'changeme') 
 * `ES_USER=elastic` - the username of the account (defaults to 'elastic')
