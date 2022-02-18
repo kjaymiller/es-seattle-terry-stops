@@ -15,11 +15,8 @@ This repo is for educational purposes and should not be used for identification 
 ## How this repo works.
 This dataset loads the data via [Socrata](https://dev.socrata.com) and ingests it into elasticsearch.
 
-Mappings are translated based on the columns provided. Any mutations will be annotated in [data_change_notes.md](./data_change_notes.md)
-reasoning below.
-
-
-**[Note]** other mappings may be defined in Elasticsearch based on this information and not listed in this repository.
+Mappings are translated based on the columns provided.
+Any mutations will be annotated in [data_change_notes.md](./data_change_notes.md)
 
 ## Requirements
 - Python 3.6+ (though 3.7+ is supported)
