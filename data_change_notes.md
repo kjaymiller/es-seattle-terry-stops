@@ -2,11 +2,11 @@
 
 ### Modified
 ---
-* values of "-" have been marked as null and not imported.
 * `friskflag` and `arrestflag` mapped as booleans with `Y`/`N` translated as `true`/`false`
+
 ### Removed
 ---
-No Removals at this time
+* values of "-" have been marked as null and not imported.
 
 
 ### Notes
