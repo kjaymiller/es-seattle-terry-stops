@@ -48,7 +48,8 @@ def bulk_mapper(soda_client: Sequence) -> dict[str:str]:
 
             # most data
             else:
-                val = val.lstrip("-").strip() # removes whitespace and -
+                new_row[key] = val.lstrip("-").strip() # removes whitespace and -
+                
 
 
         yield new_row
@@ -75,8 +76,8 @@ def load(index: str, / ) -> None:
         index=index, ignore_unavailable=True
     )  # delete index if it exists
     client.indices.create(index=index, mappings=mappings)
-    return bulk(client, bulk_mapper(soda_client), index=index, thread_count=10)
+    return bulk(client, bulk_mapper(soda_client), index=index)
 
 
 if __name__ == "__main__":
-    load(index=os.environ.get('ES_INDEX', 'test_index'))
+    load(os.environ.get('ES_INDEX', 'test_index'))
